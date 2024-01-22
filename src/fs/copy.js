@@ -1,4 +1,4 @@
-import { readdir, mkdir, copyFile } from 'node:fs/promises';
+import { cp } from 'node:fs/promises';
 import path from 'path';
 
 const copy = async () => {
@@ -8,13 +8,7 @@ const copy = async () => {
 	const toDirectoryPath = path.join(dirname, 'files_copy');
 
 	try {
-		const files = await readdir(fromDirectoryPath);
-
-		await mkdir(toDirectoryPath);
-
-		for (let fileName of files) {
-			await copyFile(path.join(fromDirectoryPath, fileName), path.join(toDirectoryPath, fileName));
-		}
+		await cp(fromDirectoryPath, toDirectoryPath, { recursive: true, force: false, errorOnExist: true });
 	} catch {
 		throw new Error('FS operation failed');
 	}
