@@ -1,5 +1,5 @@
 import { writeFile } from 'node:fs/promises';
-import path from 'path';
+import path from 'node:path';
 
 const create = async () => {
 	const filePath = path.join(import.meta.dirname, 'files', 'fresh.txt');

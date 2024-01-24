@@ -1,5 +1,5 @@
 import { readdir } from 'node:fs/promises';
-import path from 'path';
+import path from 'node:path';
 
 const list = async () => {
 	const { dirname } = import.meta;

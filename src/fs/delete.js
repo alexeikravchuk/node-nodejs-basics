@@ -1,5 +1,5 @@
 import { unlink } from 'node:fs/promises';
-import path from 'path';
+import path from 'node:path';
 
 const remove = async () => {
 	const { dirname } = import.meta;
