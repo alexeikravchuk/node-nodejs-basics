@@ -1,12 +1,12 @@
 import path from 'node:path';
 import { Worker } from 'node:worker_threads';
-import { cpus } from 'node:os';
+import { availableParallelism } from 'node:os';
 
 const { dirname } = import.meta;
 const workerPath = path.join(dirname, 'worker.js');
 
 const performCalculations = async () => {
-	const cpuCount = cpus().length;
+	const cpuCount = availableParallelism();
 	const workerPromises = [];
 
 	Array.from({ length: cpuCount }).forEach((_, index) => {
